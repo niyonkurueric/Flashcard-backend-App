@@ -9,8 +9,10 @@ type Cards {
 }
 
 type Mutation {
+  UpdateCard(answer: String, id: Int!, question: String): Cards!
   creatNewCard(answer: String!, question: String!): Cards!
   createNewUser(email: String!, names: String!, password: String!): Users!
+  deleteCard(id: Int!): String!
 }
 
 type Query {

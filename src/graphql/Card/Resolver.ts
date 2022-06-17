@@ -1,4 +1,4 @@
-import { Context } from '../../context';
+import { Context, context } from '../../context';
 const getAllCards = async (parent: any, args: any, context: Context) => {
   const allCards = await context.prisma.card.findMany()
   return allCards
@@ -22,4 +22,29 @@ const createNewCard = async (parent: any, args: any, context: Context) => {
   return newCard
 }
 
-export { getAllCards, createNewCard, getOneCard }
+const deleteCard = async (parent: any, args: any, context: Context) => {
+  const cardToBeDeleted = await context.prisma.card.delete({
+    where: {
+      id: args.id,
+    }
+  })
+  if (!cardToBeDeleted) throw new Error("Card with that id is not found");
+  return "card have been deleted"
+}
+
+const updateCard = async (parent: any, args: any, context: Context) => {
+  const cardToBeUpdated = await context.prisma.card.update({
+    where: {
+      id: args.id,
+    },
+    data: {
+      question: args.question,
+      answer: args.answer
+    }
+  })
+  if (!cardToBeUpdated) throw new Error("card with that id not found");
+  return cardToBeUpdated
+
+}
+
+export { getAllCards, createNewCard, getOneCard, deleteCard, updateCard }

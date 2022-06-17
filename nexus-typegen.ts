@@ -60,8 +60,10 @@ export interface NexusGenFieldTypes {
     question: string; // String!
   }
   Mutation: { // field return type
+    UpdateCard: NexusGenRootTypes['Cards']; // Cards!
     creatNewCard: NexusGenRootTypes['Cards']; // Cards!
     createNewUser: NexusGenRootTypes['Users']; // Users!
+    deleteCard: string; // String!
   }
   Query: { // field return type
     getAllCard: NexusGenRootTypes['Cards'][]; // [Cards!]!
@@ -84,8 +86,10 @@ export interface NexusGenFieldTypeNames {
     question: 'String'
   }
   Mutation: { // field return type name
+    UpdateCard: 'Cards'
     creatNewCard: 'Cards'
     createNewUser: 'Users'
+    deleteCard: 'String'
   }
   Query: { // field return type name
     getAllCard: 'Cards'
@@ -103,6 +107,11 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    UpdateCard: { // args
+      answer?: string | null; // String
+      id: number; // Int!
+      question?: string | null; // String
+    }
     creatNewCard: { // args
       answer: string; // String!
       question: string; // String!
@@ -111,6 +120,9 @@ export interface NexusGenArgTypes {
       email: string; // String!
       names: string; // String!
       password: string; // String!
+    }
+    deleteCard: { // args
+      id: number; // Int!
     }
   }
   Query: {

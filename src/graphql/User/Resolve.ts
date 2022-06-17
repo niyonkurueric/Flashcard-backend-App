@@ -19,6 +19,7 @@ const getOneUser = async (parent: any, args: any, context: Context) => {
       email: args.email
     }
   })
+  if (!existingUser) throw new Error("user with this email not found");
   return existingUser
 }
 export { getAlluser, createNewUser, getOneUser }
