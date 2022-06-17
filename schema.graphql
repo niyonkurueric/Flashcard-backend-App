@@ -2,12 +2,21 @@
 ### Do not make changes to this file directly
 
 
+type Cards {
+  answer: String!
+  id: Int!
+  question: String!
+}
+
 type Mutation {
-  post(email: String!, names: String!, password: String!): Users!
+  creatNewCard(answer: String!, question: String!): Cards!
+  createNewUser(email: String!, names: String!, password: String!): Users!
 }
 
 type Query {
+  getAllCard: [Cards!]!
   getAllUser: [Users!]!
+  getOneCard(id: Int!): Cards!
   getOneUser(email: String!): Users!
 }
 

@@ -3,7 +3,7 @@ import { createNewUser } from "./Resolve";
 export const LinkMutation = extendType({
     type: "Mutation",
     definition(t) {
-        t.nonNull.field("post", {
+        t.nonNull.field("createNewUser", {
             type: "Users",
             args: {
                 names: nonNull(stringArg()),

@@ -18,8 +18,8 @@ model User {
 }
 
 model Card {
-  id         Int       @id  @default(autoincrement())
-  names      String    @unique
-  content    String
-  createdAt  DateTime  @default(now())
+  id           Int       @id  @default(autoincrement())
+  question     String    
+  answer       String
+  createdAt    DateTime  @default(now())
 }

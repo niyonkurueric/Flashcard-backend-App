@@ -28,6 +28,11 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Cards: { // root type
+    answer: string; // String!
+    id: number; // Int!
+    question: string; // String!
+  }
   Mutation: {};
   Query: {};
   Users: { // root type
@@ -49,11 +54,19 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Cards: { // field return type
+    answer: string; // String!
+    id: number; // Int!
+    question: string; // String!
+  }
   Mutation: { // field return type
-    post: NexusGenRootTypes['Users']; // Users!
+    creatNewCard: NexusGenRootTypes['Cards']; // Cards!
+    createNewUser: NexusGenRootTypes['Users']; // Users!
   }
   Query: { // field return type
+    getAllCard: NexusGenRootTypes['Cards'][]; // [Cards!]!
     getAllUser: NexusGenRootTypes['Users'][]; // [Users!]!
+    getOneCard: NexusGenRootTypes['Cards']; // Cards!
     getOneUser: NexusGenRootTypes['Users']; // Users!
   }
   Users: { // field return type
@@ -65,11 +78,19 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenFieldTypeNames {
+  Cards: { // field return type name
+    answer: 'String'
+    id: 'Int'
+    question: 'String'
+  }
   Mutation: { // field return type name
-    post: 'Users'
+    creatNewCard: 'Cards'
+    createNewUser: 'Users'
   }
   Query: { // field return type name
+    getAllCard: 'Cards'
     getAllUser: 'Users'
+    getOneCard: 'Cards'
     getOneUser: 'Users'
   }
   Users: { // field return type name
@@ -82,13 +103,20 @@ export interface NexusGenFieldTypeNames {
 
 export interface NexusGenArgTypes {
   Mutation: {
-    post: { // args
+    creatNewCard: { // args
+      answer: string; // String!
+      question: string; // String!
+    }
+    createNewUser: { // args
       email: string; // String!
       names: string; // String!
       password: string; // String!
     }
   }
   Query: {
+    getOneCard: { // args
+      id: number; // Int!
+    }
     getOneUser: { // args
       email: string; // String!
     }
