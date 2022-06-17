@@ -8,11 +8,12 @@ type Mutation {
 
 type Query {
   getAllUser: [Users!]!
+  getOneUser(email: String!): Users!
 }
 
 type Users {
   email: String!
   id: Int!
-  name: String!
+  names: String!
   password: String!
 }

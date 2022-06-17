@@ -8,9 +8,17 @@ const createNewUser = async (parent: any, args: any, context: Context) => {
     data: {
       email: args.email,
       password: args.password,
-      names: args.name
+      names: args.names
     }
   })
   return newUser
 }
-export { getAlluser, createNewUser }
+const getOneUser = async (parent: any, args: any, context: Context) => {
+  const existingUser = await context.prisma.user.findUnique({
+    where: {
+      email: args.email
+    }
+  })
+  return existingUser
+}
+export { getAlluser, createNewUser, getOneUser }

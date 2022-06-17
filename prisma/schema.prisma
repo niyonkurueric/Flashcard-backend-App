@@ -16,3 +16,10 @@ model User {
   names      String    
   createdAt  DateTime  @default(now())
 }
+
+model Card {
+  id         Int       @id  @default(autoincrement())
+  names      String    @unique
+  content    String
+  createdAt  DateTime  @default(now())
+}
