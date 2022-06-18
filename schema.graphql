@@ -11,7 +11,6 @@ type Cards {
   answer: String!
   id: Int!
   question: String!
-  user: Users!
 }
 
 type Mutation {
@@ -28,6 +27,7 @@ type Query {
   getAllUser: [Users!]!
   getOneCard(id: Int!): Cards!
   getOneUser(email: String!): Users!
+  getOwnCards: [Cards]!
 }
 
 type Users {

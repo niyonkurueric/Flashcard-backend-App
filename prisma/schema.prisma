@@ -22,7 +22,7 @@ model Card {
   id           Int       @id  @default(autoincrement())
   question     String    
   answer       String
-  postedBy     User?    @relation(fields: [postedById], references: [id])
-  postedById   Int?
+  postedBy     User      @relation(fields: [postedById], references: [id])
+  postedById   Int
   createdAt    DateTime  @default(now())
 }

@@ -4,7 +4,7 @@ import { APP_SECRET } from "../../utils/key";
 import { Context, context } from '../../context';
 import { User } from '../User/User';
 
-const SignupResolver = async (parent: any, args: any, content: Context) => {
+const SignupResolver = async (parent: any, args: any, context: Context) => {
   const password = await bcrypt.hash(args.password, 10);
   const existingUser = await context.prisma.user.findUnique({
     where: {

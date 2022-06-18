@@ -67,7 +67,6 @@ export interface NexusGenFieldTypes {
     answer: string; // String!
     id: number; // Int!
     question: string; // String!
-    user: NexusGenRootTypes['Users']; // Users!
   }
   Mutation: { // field return type
     Signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
@@ -82,6 +81,7 @@ export interface NexusGenFieldTypes {
     getAllUser: NexusGenRootTypes['Users'][]; // [Users!]!
     getOneCard: NexusGenRootTypes['Cards']; // Cards!
     getOneUser: NexusGenRootTypes['Users']; // Users!
+    getOwnCards: Array<NexusGenRootTypes['Cards'] | null>; // [Cards]!
   }
   Users: { // field return type
     cards: NexusGenRootTypes['Cards'][]; // [Cards!]!
@@ -101,7 +101,6 @@ export interface NexusGenFieldTypeNames {
     answer: 'String'
     id: 'Int'
     question: 'String'
-    user: 'Users'
   }
   Mutation: { // field return type name
     Signup: 'AuthPayload'
@@ -116,6 +115,7 @@ export interface NexusGenFieldTypeNames {
     getAllUser: 'Users'
     getOneCard: 'Cards'
     getOneUser: 'Users'
+    getOwnCards: 'Cards'
   }
   Users: { // field return type name
     cards: 'Cards'

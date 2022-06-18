@@ -1,5 +1,5 @@
 import { extendType, intArg, nonNull } from 'nexus';
-import { getAllCards, getOneCard } from './Resolver';
+import { getAllCards, getOneCard, getOwnCards } from './Resolver';
 export const QueryCard = extendType({
   type: "Query",
   definition(t) {
@@ -13,6 +13,10 @@ export const QueryCard = extendType({
         id: nonNull(intArg())
       },
       resolve: getOneCard,
+    })
+    t.nonNull.list.field("getOwnCards", {
+      type: "Cards",
+      resolve: getOwnCards
     })
   },
 })
