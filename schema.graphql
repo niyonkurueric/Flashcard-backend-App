@@ -2,17 +2,25 @@
 ### Do not make changes to this file directly
 
 
+type AuthPayload {
+  token: String!
+  user: Users!
+}
+
 type Cards {
   answer: String!
   id: Int!
   question: String!
+  user: Users!
 }
 
 type Mutation {
+  Signup(email: String!, names: String!, password: String!): AuthPayload!
   UpdateCard(answer: String, id: Int!, question: String): Cards!
   creatNewCard(answer: String!, question: String!): Cards!
   createNewUser(email: String!, names: String!, password: String!): Users!
   deleteCard(id: Int!): String!
+  login(email: String!, password: String!): AuthPayload!
 }
 
 type Query {
@@ -23,6 +31,7 @@ type Query {
 }
 
 type Users {
+  cards: [Cards!]!
   email: String!
   id: Int!
   names: String!

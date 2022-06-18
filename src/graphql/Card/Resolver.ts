@@ -46,5 +46,11 @@ const updateCard = async (parent: any, args: any, context: Context) => {
   return cardToBeUpdated
 
 }
+const postedByUser = async (parent: any, args: any, context: Context) => {
+  const cardfForUser = await context.prisma.user.findUnique({
+    where: { id: parent.id }
+  })
+  return cardfForUser
+}
 
-export { getAllCards, createNewCard, getOneCard, deleteCard, updateCard }
+export { getAllCards, createNewCard, getOneCard, deleteCard, updateCard, postedByUser }
