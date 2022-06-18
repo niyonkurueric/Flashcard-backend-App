@@ -28,11 +28,11 @@ const login = async (parent: any, args: any, context: Context) => {
     where: { email: args.email }
   })
   if (!existingUser) throw new Error("user email not found");
-  const validate = await bcrypt.compare(
+  const isPasswordValid = await bcrypt.compare(
     args.password,
     existingUser.password
   )
-  if (!validate) throw new Error("invalid credentials");
+  if (!isPasswordValid) throw new Error("invalid credentials");
   const token = jwt.sign({ userId: existingUser.id }, APP_SECRET);
   return { token, user: existingUser }
 }
