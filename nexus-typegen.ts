@@ -40,7 +40,6 @@ export interface NexusGenObjects {
   Mutation: {};
   Query: {};
   Users: { // root type
-    cards: NexusGenRootTypes['Cards'][]; // [Cards!]!
     email: string; // String!
     id: number; // Int!
     names: string; // String!

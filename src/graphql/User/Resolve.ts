@@ -1,4 +1,4 @@
-import { Context, context } from '../../context';
+import { Context, context, prisma } from '../../context';
 const getAlluser = async (parent: any, args: any, context: any) => {
   const AllUsers = await context.prisma.user.findMany()
   return AllUsers
@@ -22,4 +22,5 @@ const getOneUser = async (parent: any, args: any, context: any) => {
   if (!existingUser) throw new Error("user with this email not found");
   return existingUser
 }
+
 export { getAlluser, createNewUser, getOneUser }
