@@ -1,9 +1,9 @@
 import { Context, context } from '../../context';
-const getAlluser = async (parent: any, args: any, context: Context) => {
+const getAlluser = async (parent: any, args: any, context: any) => {
   const AllUsers = await context.prisma.user.findMany()
   return AllUsers
 }
-const createNewUser = async (parent: any, args: any, context: Context) => {
+const createNewUser = async (parent: any, args: any, context: any) => {
   const newUser = await context.prisma.user.create({
     data: {
       email: args.email,
@@ -13,7 +13,7 @@ const createNewUser = async (parent: any, args: any, context: Context) => {
   })
   return newUser
 }
-const getOneUser = async (parent: any, args: any, context: Context) => {
+const getOneUser = async (parent: any, args: any, context: any) => {
   const existingUser = await context.prisma.user.findUnique({
     where: {
       email: args.email

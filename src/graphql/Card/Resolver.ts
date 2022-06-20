@@ -1,9 +1,9 @@
 import { Context, context } from '../../context';
-const getAllCards = async (parent: any, args: any, context: Context) => {
+const getAllCards = async (parent: any, args: any, context: any) => {
   const allCards = await context.prisma.card.findMany()
   return allCards
 }
-const getOneCard = async (parent: any, args: any, context: Context) => {
+const getOneCard = async (parent: any, args: any, context: any) => {
   const existingCard = await context.prisma.card.findUnique({
     where: {
       id: args.id
@@ -12,7 +12,7 @@ const getOneCard = async (parent: any, args: any, context: Context) => {
   if (!existingCard) throw new Error("card with this id not found");
   return existingCard
 }
-const createNewCard = async (parent: any, args: any, context: Context) => {
+const createNewCard = async (parent: any, args: any, context: any) => {
   const userId = context.userId;
   if (!userId) throw new Error("Access denied");
   const newCard = await context.prisma.card.create({
@@ -25,7 +25,7 @@ const createNewCard = async (parent: any, args: any, context: Context) => {
   return newCard
 }
 
-const deleteCard = async (parent: any, args: any, context: Context) => {
+const deleteCard = async (parent: any, args: any, context: any) => {
   const userId = context.userId;
   if (!userId) throw new Error("Access denied");
   const cardToBeDeleted = await context.prisma.card.findUnique({
@@ -41,7 +41,7 @@ const deleteCard = async (parent: any, args: any, context: Context) => {
   return "card have been deleted"
 }
 
-const updateCard = async (parent: any, args: any, context: Context) => {
+const updateCard = async (parent: any, args: any, context: any) => {
   const userId = context.userId;
   if (!userId) throw new Error("Access denied");
 
@@ -65,7 +65,7 @@ const updateCard = async (parent: any, args: any, context: Context) => {
   return updatedCard
 
 }
-const getOwnCards = async (parent: any, args: any, context: Context) => {
+const getOwnCards = async (parent: any, args: any, context: any) => {
   const userId = context.userId;
   if (!userId) throw new Error("Access denied");
   const ownCards = await context.prisma.card.findMany({
