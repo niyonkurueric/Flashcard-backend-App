@@ -165,6 +165,9 @@ export interface NexusGenArgTypes {
     getOneUser: { // args
       email: string; // String!
     }
+    getOwnCards: { // args
+      orderBy?: NexusGenEnums['Sort'] | null; // Sort
+    }
   }
 }
 

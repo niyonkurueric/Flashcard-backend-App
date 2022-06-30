@@ -75,6 +75,9 @@ const getOwnCards = async (parent: any, args: any, context: any) => {
   const ownCards = await context.prisma.card.findMany({
     where: { postedById: userId }
   })
+  if (args.orderBy) {
+    return _.orderBy(ownCards, ['question'], [args.orderBy,]);
+  }
   return ownCards
 }
 

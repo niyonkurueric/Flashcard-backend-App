@@ -19,6 +19,9 @@ export const QueryCard = extendType({
     })
     t.nonNull.list.field("getOwnCards", {
       type: "Cards",
+      args: {
+        orderBy: arg({ type: "Sort" }),
+      },
       resolve: getOwnCards
     })
   },

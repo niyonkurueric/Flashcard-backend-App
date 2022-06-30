@@ -27,7 +27,7 @@ type Query {
   getAllUser: [Users!]!
   getOneCard(id: Int!): Cards!
   getOneUser(email: String!): Users!
-  getOwnCards: [Cards]!
+  getOwnCards(orderBy: Sort): [Cards]!
 }
 
 enum Sort {
